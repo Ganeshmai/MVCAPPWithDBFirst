@@ -1,0 +1,80 @@
+﻿@model MVCAPPWithDBFirst.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Product</h2>
+
+<form action="/Products/Edit/@Model.ProductId" method="post" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.ProductName)
+            @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+
+            @Html.HiddenFor(m=>m.ProductId)
+
+            @*<input type="hidden"name="ProductId" />*@
+        </div>
+
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        </div>
+
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.DateofPurchase)
+            @Html.TextBoxFor(m => m.DateofPurchase, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.AvailabilityStatus)
+            @Html.TextBoxFor(m => m.AvailabilityStatus, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.CategoryId)
+            @Html.TextBoxFor(m => m.CategoryId, new { @class = "form-control" })
+            @*<select class=" form-control" id="CategoryId" name="CategoryId">
+                <option value="">Please select</option>
+                @foreach (var item in ViewBag.cats)
+                {
+                    <option value="@item.CategoryId">@item.CategoryName</option>
+                }
+            </select>*@
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.BrandId)
+            @Html.TextBoxFor(m => m.BrandId, new { @class = "form-control" })
+            @*<select class=" form-control" id="BrandId" name="BrandId">
+                <option value="">Please select</option>
+                @foreach (var item in ViewBag.brds)
+                {
+                    <option value="@item.BrandId">@item.BrandName</option>
+                }
+            </select>*@
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.photo)
+        <input type="file" class="form-control-file" id="Photo" name="Photo"value=@Model.photo />
+        </div>
+        <div class="form-check">
+            @*<input class="form-check-input" type="checkbox" id="Active" name="Active" value="1" />*@
+            <div>
+            @Html.CheckBox("Active", true)
+            <label class="form-check-lable">Active</label>
+
+
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-default" href="/Products/Index">Cancel</a>
+
+
+</form>
+

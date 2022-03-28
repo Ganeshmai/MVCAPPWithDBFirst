@@ -1,0 +1,42 @@
+﻿@model MVCAPPWithDBFirst.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> Product Details</h2>
+<table class="table">
+    <tr>
+        <th>Product Name</th>
+        <td>@Model.ProductName</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>@Model.Price.Value.ToString("c")</td>
+    </tr>
+    <tr>
+        <th>Date of Purchase</th>
+        <td>@Model.DateofPurchase.Value.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Availibility Status</th>
+        <td>@Model.AvailabilityStatus</td>
+    </tr>
+    <tr>
+        <th>Activa</th>
+        <td>@Model.Active</td>
+    </tr>
+   
+    <th>Photo</th>
+
+    @if (Model.photo != null)
+    {
+        <hr />
+        <img src="data:image;base64,@Model.photo" width="250" height="250" />
+        
+    }
+    </tr>
+
+</table>
+<a href="/Products/Index"class="btn btn-default">Back to Productlist</a>
+

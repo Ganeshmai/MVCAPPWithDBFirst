@@ -1,0 +1,35 @@
+﻿@model MVCAPPWithDBFirst.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Product</h2>
+
+<form action="/Products/delete/@Model.ProductId" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.ProductName)
+            @Html.DisplayFor(m => m.ProductName, new { @class = "form-control" })
+
+            @Html.HiddenFor(m => m.ProductId)
+
+            @*<input type="hidden"name="ProductId" />*@
+        </div>
+
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.Price)
+            @Html.DisplayFor(m => m.Price, new { @class = "form-control" })
+        </div>
+
+
+   
+    </div>
+
+    <button type="submit" class="btn btn-success">DELETE</button>
+    <a class="btn btn-danger" href="/Products/Index">Cancel</a>
+
+
+</form>
+

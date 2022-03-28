@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MVCAPPWithDBFirst.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Products</h2>
+<a style="background-color:brown" href="/Products/Create" class="btn btn-default">NewProduct</a>
+<br />
+<form class="form-inline" action="/Products/Index">  
+        <label for="search">Search:</label>
+        <input type="text" class="form-control" id="search" name="search" placeholder="searchproduct" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<hr />
+<br />
+<table style="background-color:chartreuse" class="table table-bordered table-hover ">
+    <tr>
+
+        <th>Product Id</th>
+        <th>
+            @if (ViewBag.iconClass == "fa-sort-down")
+            {
+                <a href="/Products/Index?sortColName=ProductName&iconClass=fa-sort-up">ProductName</a>
+            }
+            else
+            {
+                <a href="/Products/Index?sortColName=ProductName&iconClass=fa-sort-down">ProductName</a>
+            }
+
+        </th>
+        <th>Product Price</th>
+        <th>Product DateofPurchase</th>
+        <th>Product AvailabilityStatus</th>
+        <th>Product CategoryId</th>
+        <th>Product BrandId</th>
+        <th>Product Active</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@Html.ActionLink(item.ProductName, "Details",new { id = item.ProductId})</td>
+            <td>@item.Price.Value.ToString("c")</td>
+            <td>@item.DateofPurchase</td>
+            <td>@item.AvailabilityStatus</td>
+            <td>@item.CategoryId</td>
+            <td>@item.BrandId</td>
+            <td>@item.Active</td>
+            <td><img src="data:image;base64,@item.photo"width="50"height="50"/></td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId })
+                </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+
+            </td>
+        </tr>
+    }
+</table>
+
+
